@@ -11,8 +11,9 @@ const UserRow: React.FC<any> = ({ user, onEdit, onDelete }) => {
     <tr key={user.id_t_user}>
       <td>{user.id_t_user}</td>
       <td>{user.nom + " " + user.prenom}</td>
+      <td>{user.adresse_mail}</td>
+      <td>{user.num_tel}</td>
       <td>{user.admin ? '✅' : '❌'}</td>
-
       <td>
         <button onClick={() => onEdit(user.id_t_user)}>Modifier</button>
         <button onClick={() => onDelete(user.id_t_user)} style={{ marginLeft: '5px' }}>
