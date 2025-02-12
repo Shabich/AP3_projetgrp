@@ -52,7 +52,7 @@ const UsersPanel: React.FC = () => {
       setUsers(data)
     } catch (err) {
       console.error('Erreur de requête :', err)
-      setError('Erreur lors du chargement des users')
+      setError('Session invalide, veuillez vous reconnecter')
 
     } finally {
       setIsLoading(false)
@@ -119,7 +119,7 @@ const UsersPanel: React.FC = () => {
       {isLoading && <p>Chargement des users...</p>}
       {error && <p style={{ color: 'red' }}>{error} 
       </p>}
-      {error && <button onClick={handleLogout}>Veuillez vous reconnecter</button>}
+      {error && <button style={{ backgroundColor:'red', color:'white', paddingRight:'20px', paddingLeft:'20px' }} onClick={handleLogout}>Se reconnecter</button>}
 
 
       {!isLoading && !error && (
@@ -128,6 +128,8 @@ const UsersPanel: React.FC = () => {
             <tr>
               <th>ID</th>
               <th>Nom</th>
+              <th>adresse email</th>
+              <th>numéro de telephone</th>
               <th>Statut</th>
               <th>Actions</th>
             </tr>
