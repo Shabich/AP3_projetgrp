@@ -5,7 +5,7 @@ import produitRoute from './Produits/produit.route'
 import userRoute from './Users/users.route'
 
 const app = express()
-const port = 3000
+const port = 3306
 
 app.use(cors({}))
 

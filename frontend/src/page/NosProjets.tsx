@@ -16,6 +16,18 @@ function NosProjets() {
             plantes, en plaçant toujours le patient au cœur de notre recherche et développement.
           </p>
         </section>
+
+        <section className="flex flex-col justify-center items-center p-9">
+          <h2>Traitement Immunothérapeutique Contre les Maladies Auto-Immunes</h2>
+          <p className="w-[900px] text-xl">
+            Ce projet vise à développer un traitement innovant utilisant l'immunothérapie pour
+            cibler spécifiquement les cellules responsables des maladies auto-immunes. En modulant
+            le système immunitaire de manière précise, notre approche réduit les effets secondaires
+            tout en offrant une réponse thérapeutique durable. Actuellement en phase d'essais
+            cliniques, ce traitement pourrait représenter un espoir immense pour des millions de
+            patients.
+          </p>
+        </section>
       </div>
     </div>
   )
