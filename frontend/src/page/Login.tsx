@@ -8,6 +8,7 @@ function Auth() {
   const [prenom, setPrenom] = useState('')
   const [isSignUp, setIsSignUp] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isBoxChecked, setisBoxChecked] = useState(false)
   const [errorMessage, setErrorMessage] = useState('') // Ajout pour afficher des erreurs
   // Récupérer le token
   const token = localStorage.getItem('authToken')
@@ -30,10 +31,10 @@ function Auth() {
     try {
       console.log('Données envoyées :', { email, password })
 
-      const dataForm = isSignUp 
-      ? { email, password, nom, prenom } 
-      : { email, password };
-    
+      const dataForm = isSignUp
+        ? { email, password, nom, prenom, userType: isBoxChecked ? 1 : 0 }
+        : { email, password }
+
       const response = await fetch(`http://localhost:3000/api/auth/${endpoint}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -94,13 +95,26 @@ function Auth() {
       <div className="flex justify-center p-20">
         <div className="flex flex-col justify-center items-center p-5 bg-white shadow-xl p-9 rounded-md gap-4">
           <div className="flex flex-col">
-            <p>{isSignUp ? 'Se créer un compte' : 'Se connecter à son compte'}</p>
+            <p className="text-xl">
+              {isSignUp ? 'Se créer un compte' : 'Se connecter à son compte'}
+            </p>
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             {isSignUp && (
               <>
-                <div className="flex gap-3 max-w-96">
+                <div className="flex flex-col gap-3 max-w-96">
+                  <div className="flex gap-1">
+                    <p>Compte entreprise ?</p>
+                    <input
+                      type="checkbox"
+                      id="yes"
+                      name="yes"
+                      checked={isBoxChecked}
+                      onChange={e => setisBoxChecked(e.target.checked)}
+                    />
+                    <label htmlFor="yes">Oui</label>
+                  </div>
                   <input
                     className="border border-gray-300 focus:border-black w-60 p-2 rounded-md focus:outline-none"
                     type=""
